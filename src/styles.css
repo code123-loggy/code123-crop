@@ -1,0 +1,40 @@
+.App {
+    font-family: sans-serif;
+    padding: 16px;
+}
+
+.Crop-Controls {
+    margin-bottom: 10px;
+}
+.Crop-Controls > div {
+    display: inline-block;
+    margin-bottom: 4px;
+    margin-right: 4px;
+}
+
+img {
+    max-width: 100%;
+}
+
+.main-container {
+    display: flex;
+    /*height: 100vh; !* 或根据需要设置高度 *!*/
+    overflow-y: hidden; /* 隐藏垂直方向的默认滚动条 */
+}
+
+.left-panel,
+.right-panel {
+    flex: 1; /* 使左右面板各占父容器宽度的 50% */
+    overflow-y: auto; /* 当内容超出时显示垂直滚动条 */
+    box-sizing: border-box; /* 包含 padding 和 border 在元素总宽度内 */
+    padding: 16px; /* 添加适当内边距 */
+}
+
+/* 如果需要，可以为左右面板分别添加不同的样式或背景色等 */
+.left-panel {
+    background-color: #f0f0f0;
+}
+
+.right-panel {
+    background-color: #e0e0e0;
+}
