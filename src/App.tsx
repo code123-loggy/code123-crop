@@ -22,8 +22,9 @@ function centerAspectCrop(
   return centerCrop(
     makeAspectCrop(
       {
-        unit: '%',
-        width: 90,
+        unit: 'px',
+        height: 200,
+        width: 300,
       },
       aspect,
       mediaWidth,
@@ -74,9 +75,9 @@ export default function App() {
     // This will size relative to the uploaded image
     // size. If you want to size according to what they
     // are looking at on screen, remove scaleX + scaleY
-    const scaleX = image.naturalWidth / image.width
-    const scaleY = image.naturalHeight / image.height
-
+    const scaleX = 1;//image.naturalWidth / image.width
+    const scaleY = 1;//image.naturalHeight / image.height
+    console.log(image.naturalWidth, image.width, scaleX, scaleY)
     const offscreen = new OffscreenCanvas(
       completedCrop.width * scaleX,
       completedCrop.height * scaleY,
@@ -116,6 +117,7 @@ export default function App() {
 
   useDebounceEffect(
     async () => {
+      console.log(completedCrop?.width)
       if (
         completedCrop?.width &&
         completedCrop?.height &&
@@ -151,6 +153,7 @@ export default function App() {
       }
     }
   }
+  console.log('console')
 
   return <>
     <div className="App">
@@ -193,13 +196,16 @@ export default function App() {
           </button>
           {aspect ? '锁定' : '不锁定'}
         </div>
+        <div>
+          {crop ? `${Math.floor(crop.width)}x${Math.floor(crop.height)}` : '?x?'}
+        </div>
       </div>
       <div className={'main-container'}>
         <div className={'left-panel'}>
         {!!imgSrc && (
           <ReactCrop
             crop={crop}
-            onChange={(_, percentCrop) => setCrop(percentCrop)}
+            onChange={(pixelCrop, percentCrop) => setCrop(pixelCrop)}
             onComplete={(c) => setCompletedCrop(c)}
             aspect={aspect}
             // minWidth={400}
