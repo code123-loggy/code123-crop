@@ -117,7 +117,6 @@ export default function App() {
 
   useDebounceEffect(
     async () => {
-      console.log(completedCrop?.width)
       if (
         completedCrop?.width &&
         completedCrop?.height &&
@@ -153,22 +152,21 @@ export default function App() {
       }
     }
   }
-  console.log('console')
 
-  return <>
+return <>
     <div className="App">
       <div>
         <h2>免费的图片裁剪</h2>
         <p>
           <img src="https://www.freeiconspng.com/uploads/red-arrow-down-icon-png-30.png" width="40"
                alt="red arrow down icon png" />
-          请在选择一个文件。所有处理都在本地，安全可靠，无泄漏
+          Please select a file. All processing is done locally, secure and reliable, with no leaks.
         </p>
       </div>
       <div className="Crop-Controls">
         <input type="file" accept="image/*" onChange={onSelectFile} />
         <div>
-          <label htmlFor="scale-input">缩放: </label>
+          <label htmlFor="scale-input">scale: </label>
           <input
             id="scale-input"
             type="number"
@@ -179,7 +177,7 @@ export default function App() {
           />
         </div>
         <div>
-          <label htmlFor="rotate-input">旋转: </label>
+          <label htmlFor="rotate-input">ratate:</label>
           <input
             id="rotate-input"
             type="number"
@@ -192,12 +190,12 @@ export default function App() {
         </div>
         <div>
           <button onClick={handleToggleAspectClick}>
-            宽高比例
-          </button>
-          {aspect ? '锁定' : '不锁定'}
+          aspect
+          </button>:
+          {aspect ? 'lock' : 'unlock'}
         </div>
         <div>
-          {crop ? `${Math.floor(crop.width)}x${Math.floor(crop.height)}` : '?x?'}
+          {crop ? `x:${Math.floor(crop.x)} y: ${Math.floor(crop.y)} w:${Math.floor(crop.width)} h:${Math.floor(crop.height)}` : '????'}
         </div>
       </div>
       <div className={'main-container'}>
@@ -236,9 +234,9 @@ export default function App() {
               />
             </div>
             <div>
-              <button onClick={onDownloadCropClick}>下载</button>
+              <button onClick={onDownloadCropClick}>Download</button>
               <div style={{ fontSize: 12, color: '#666' }}>
-                或者右键菜单，复制图片
+                or click right button to save image
               </div>
               <a
                 href="#hidden"
