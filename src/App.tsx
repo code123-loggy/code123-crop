@@ -156,7 +156,7 @@ export default function App() {
 return <>
     <div className="App">
       <div>
-        <h2>免费的图片裁剪</h2>
+        <h2>Free Image Crop Online</h2>
         <p>
           <img src="https://www.freeiconspng.com/uploads/red-arrow-down-icon-png-30.png" width="40"
                alt="red arrow down icon png" />
